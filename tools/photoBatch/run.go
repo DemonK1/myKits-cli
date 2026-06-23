@@ -17,7 +17,7 @@ func Run() {
 	fmt.Println(strings.Repeat("─", 60))
 	fmt.Println()
 	fmt.Println("✨ 核心功能：")
-	fmt.Println("1. 📂 自动创建【_NewFile_Photo】根目录，所有输出文件统一存放")
+	fmt.Println("1. 📂 在此目录下自动创建【_NewFile_Photo】根文件夹，所有生成的文件夹统一存放，不会打乱原有文件")
 	fmt.Println("2. 🖼️ 支持批量压缩照片，优化文件体积")
 	fmt.Println("3. 🙌 自动将所有照片统一转换为 JPG 格式")
 	fmt.Println("4. ✌️ 支持自定义输出照片的命名规则与文件后缀")

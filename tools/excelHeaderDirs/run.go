@@ -14,7 +14,7 @@ func Run() {
 	fmt.Println(strings.Repeat("─", 60))
 	fmt.Println()
 	fmt.Println("✨ 核心功能:")
-	fmt.Println("1. 📂 在此目录下自动创建「_NewFile_Excel」根文件夹，所有生成的文件夹都会存放在这里，不会打乱原有文件")
+	fmt.Println("1. 📂 在此目录下自动创建「_NewFile_Excel」根文件夹，所有生成的文件夹统一存放，不会打乱原有文件")
 	fmt.Println("2. 📑 支持读取 .xlsx / .xls 格式的 Excel 文件，自动匹配同名文件")
 	fmt.Println("3. 📁 选中目标表头列后，会将该列所有【非空内容】作为名称，批量创建对应子文件夹")
 	fmt.Println()
