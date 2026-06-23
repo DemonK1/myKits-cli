@@ -6,6 +6,7 @@ import (
 	"myKits-cli/tools/dirRename"
 	"myKits-cli/tools/excelHeaderDirs"
 	"myKits-cli/tools/photoBatch"
+	"myKits-cli/tools/wechatMulti"
 	"os"
 	"os/exec"
 	"strings"
@@ -40,11 +41,9 @@ func showMainMenu() {
 		{"📷 1.批量重命名照片（压缩/后缀）", runPhoto},
 		{"📁 2.批量重命名文件夹（自动创建/名称）", runDir},
 		{"📊 3.读取 Excel 表头创建文件夹", runExcel},
-		{"🏗️ 4.创建自定义系统目录结构", runStructure},
-		{"💬 5.微信多开", runWechat},
-		{"🗄️ 6.启动数据库服务", runDB},
-		{"📤 7.导出工具为独立程序", runExport},
-		{"❌ 8.退出", func() { os.Exit(0) }},
+		{"💬 4.微信多开", runWechat},
+		{"🗄️ 5.启动数据库服务", runDB},
+		{"❌ 7.退出", func() { os.Exit(0) }},
 	}
 
 	selected := 0
@@ -88,7 +87,7 @@ func showMainMenu() {
 		case buf[0] == 'q', buf[0] == 'Q':
 			term.Restore(int(os.Stdin.Fd()), oldState)
 			os.Exit(0)
-		case buf[0] >= '1' && buf[0] <= '8':
+		case buf[0] >= '1' && buf[0] <= '7':
 			idx := int(buf[0] - '1')
 			if idx < len(items) {
 				term.Restore(int(os.Stdin.Fd()), oldState)
@@ -104,8 +103,10 @@ func showMainMenu() {
 
 func renderMenu(items []menuItem, selected int) {
 	clearScreen()
-	fmt.Println("\n  📦 kits 交互式工具集")
-	fmt.Println("  " + strings.Repeat("─", 30))
+	fmt.Println()
+	fmt.Println("\n  📦 myKits 交互式工具集")
+	fmt.Println()
+	fmt.Println("  " + strings.Repeat("─", 60))
 	for i, item := range items {
 		if i == selected {
 			fmt.Printf("\033[1;32m👉 %s\033[0m\n", item.label)
@@ -113,7 +114,7 @@ func renderMenu(items []menuItem, selected int) {
 			fmt.Printf("   %s\n", item.label)
 		}
 	}
-	fmt.Println("\n  ↑↓选择  Enter确认  数字直达  q退出")
+	fmt.Println("\n  ↑↓选择  Enter确认  输入数字直达  q退出")
 }
 
 func clearScreen() {
@@ -138,12 +139,9 @@ func runExcel() {
 	waitToExitOrMenu()
 }
 
-func runStructure() {
-	waitToExitOrMenu()
-}
-
 func runWechat() {
-	waitToExitOrMenu()
+	wechatMulti.Run()
+	os.Exit(0)
 }
 
 func runDB() {
