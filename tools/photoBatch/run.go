@@ -13,13 +13,22 @@ import (
 )
 
 func Run() {
+	fmt.Println("📸 照片批量处理工具")
+	fmt.Println(strings.Repeat("─", 60))
 	fmt.Println()
-	fmt.Println(`⚠️ 【重要前置提示】
-本工具需要「在存放照片的文件夹内运行」，否则会找不到要处理的图片！`)
+	fmt.Println("✨ 核心功能：")
+	fmt.Println("1. 📂 自动创建【_NewFile_Photo】根目录，所有输出文件统一存放")
+	fmt.Println("2. 🖼️ 支持批量压缩照片，优化文件体积")
+	fmt.Println("3. 🙌 自动将所有照片统一转换为 JPG 格式")
+	fmt.Println("4. ✌️ 支持自定义输出照片的命名规则与文件后缀")
 	fmt.Println()
-	fmt.Println("请把该程序移至「存放照片的文件夹内」")
+	fmt.Println(strings.Repeat("─", 60))
 	fmt.Println()
-	fmt.Println("✅ 如果你已经在这个照片文件夹里了，直接按【Enter/回车键】开始操作")
+	fmt.Println("💡 操作提示：")
+	fmt.Println("本工具必须在【待处理照片的源文件夹】内运行，否则无法识别图片文件")
+	fmt.Println("✅ 已在目标目录？直接按步骤；未在？先移动程序到照片目录")
+	fmt.Println()
+	fmt.Println(strings.Repeat("─", 60))
 
 	// 获取当前工作目录
 	currentDir, err := os.Getwd()

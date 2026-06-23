@@ -14,8 +14,8 @@ import (
 // CreateProductFolders 根据产品列表创建文件夹结构
 // 返回: 新建数、已存在数、主文件夹路径
 func CreateProductFolders(rows [][]string, colIdxs string, dir string) (created, existed int, err error) {
-	// 1. 先创建「_NewFile」父目录（必须第一步做！）
-	newDir := filepath.Join(dir, "_NewFile")
+	// 1. 先创建「_NewFile_Excel」父目录（必须第一步做！）
+	newDir := filepath.Join(dir, "_NewFile_Excel")
 	// 递归创建目录，避免父目录不存在导致后续子文件夹创建失败
 	if err = os.MkdirAll(newDir, 0755); err != nil {
 		return 0, 0, fmt.Errorf("创建_NewFile目录失败: %v", err)

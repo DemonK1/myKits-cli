@@ -191,7 +191,7 @@ func processImages(dir, prefix string, startNum int, convertToJPG bool, quality 
 	supportedExts := []string{".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".tif", ".webp"}
 
 	// 创建新文件夹
-	newDir := filepath.Join(dir, "_NewFile")
+	newDir := filepath.Join(dir, "_NewFile_Photo")
 	err := os.MkdirAll(newDir, 0755)
 	if err != nil {
 		return fmt.Errorf("\n创建文件夹失败: %v", err)
