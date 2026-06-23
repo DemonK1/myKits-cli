@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"myKits-cli/tools/dirRename"
 	"myKits-cli/tools/excelHeaderDirs"
+	"myKits-cli/tools/initSystemDir"
 	"myKits-cli/tools/photoBatch"
 	"myKits-cli/tools/wechatMulti"
 	"os"
@@ -38,11 +39,13 @@ func main() {
 
 func showMainMenu() {
 	items := []menuItem{
-		{"📷 1.批量重命名照片（压缩/后缀）", runPhoto},
-		{"📁 2.批量重命名文件夹（自动创建/名称）", runDir},
-		{"📊 3.读取 Excel 表头创建文件夹", runExcel},
-		{"💬 4.微信多开", runWechat},
-		{"🗄️ 5.启动数据库服务", runDB},
+		{"📷 1. 批量重命名照片（压缩/后缀）", runPhoto},
+		{"📁 2. 批量重命名文件夹（自动创建/名称）", runDir},
+		{"📊 3. 读取 Excel 表头创建文件夹", runExcel},
+		{"💬 4. 微信多开", runWechat},
+		{"🗄️ 5. 启动数据库服务", runDB},
+		{`📇️ 6. 初始化系统目录：统一规范文件存放、软件安装路径，结构清晰易维护
+   💡    详细配置规则：启动后弹出 PDF 说明文档`, runInitSystemDir},
 		{"❌ 7.退出", func() { os.Exit(0) }},
 	}
 
@@ -144,6 +147,11 @@ func runWechat() {
 	os.Exit(0)
 }
 
+func runInitSystemDir() {
+	initSystemDir.Run()
+	waitToExitOrMenu()
+}
+
 func runDB() {
 	waitToExitOrMenu()
 }
@@ -166,7 +174,8 @@ func runExport() {
 		{"批量重命名照片", "./app/photoApp", "PhotoBatch"},
 		{"批量重命名文件夹", "app/dirApp", "DirBatch"},
 		{"读取 Excel 创建文件夹", "./app/excelHeaderDirs", "ExcelHeaderDirs"},
-		{"微信多开", "./app/wechatMulti", "WechatMulti"},
+		{"微信多开", "./app/initSystemDirApp", "WechatMulti"},
+		{"初始化系统目录", "./app/wechatMulti", "WechatMulti"},
 		{"启动数据库服务", "./app/dbStart", "DBStart"},
 	}
 
