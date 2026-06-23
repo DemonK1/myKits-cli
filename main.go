@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"myKits-cli/tools/dbStart"
 	"myKits-cli/tools/dirRename"
 	"myKits-cli/tools/excelHeaderDirs"
 	"myKits-cli/tools/initSystemDir"
@@ -153,6 +154,7 @@ func runInitSystemDir() {
 }
 
 func runDB() {
+	dbStart.Run()
 	waitToExitOrMenu()
 }
 

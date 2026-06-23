@@ -1,3 +1,7 @@
 package main
 
-func main() {}
+import "myKits-cli/tools/dbStart"
+
+func main() {
+	dbStart.Run()
+}
