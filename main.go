@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"myKits-cli/tools/dirRename"
 	"myKits-cli/tools/excelHeaderDirs"
 	"myKits-cli/tools/photoBatch"
 	"os"
@@ -37,7 +38,7 @@ func main() {
 func showMainMenu() {
 	items := []menuItem{
 		{"📷 1.批量重命名照片（压缩/后缀）", runPhoto},
-		{"📁 2.批量重命名文件夹（新建/后缀）", runDir},
+		{"📁 2.批量重命名文件夹（自动创建/名称）", runDir},
 		{"📊 3.读取 Excel 表头创建文件夹", runExcel},
 		{"🏗️ 4.创建自定义系统目录结构", runStructure},
 		{"💬 5.微信多开", runWechat},
@@ -128,6 +129,7 @@ func runPhoto() {
 }
 
 func runDir() {
+	dirRename.Run()
 	waitToExitOrMenu()
 }
 

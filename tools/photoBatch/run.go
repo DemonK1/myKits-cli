@@ -20,7 +20,7 @@ func Run() {
 	fmt.Println("1. 📂 在此目录下自动创建【_NewFile_Photo】根文件夹，所有生成的文件夹统一存放，不会打乱原有文件")
 	fmt.Println("2. 🖼️ 支持批量压缩照片，优化文件体积")
 	fmt.Println("3. 🙌 自动将所有照片统一转换为 JPG 格式")
-	fmt.Println("4. ✌️ 支持自定义输出照片的命名规则与文件后缀")
+	fmt.Println("4. ✌️ 支持自定义输出照片的命名规则，命名规则需要有编号，例：xxxx-001")
 	fmt.Println()
 	fmt.Println(strings.Repeat("─", 60))
 	fmt.Println()
@@ -64,24 +64,24 @@ func Run() {
 		}
 	}
 
-	// 提示用户输入图片名称前缀
-	fmt.Print("\n请输入图片名称前缀: ")
+	// 提示用户输入图片名称
+	fmt.Print("\n请输入图片名称（留空默认使用 'photo'）: ")
 	reader := bufio.NewReader(os.Stdin)
 	prefix, _ := reader.ReadString('\n')
 	prefix = strings.TrimSpace(prefix)
 
 	if prefix == "" {
-		fmt.Println("\n未输入名称前缀，使用默认前缀 'photo'")
+		fmt.Println("\n未输入名称，使用默认名称 'photo'")
 		prefix = "photo"
 	} else {
-		fmt.Printf("\n使用名称前缀: '%s'\n", prefix)
+		fmt.Printf("\n使用名称: '%s'\n", prefix)
 	}
 
-	// 获取起始编号
+	// 获取起始名称编号
 	startNum := 0          // 0表示使用默认补零模式
 	useZeroPadding := true // 是否使用补零编号
 
-	fmt.Print("\n请输入起始编号 (直接回车从001开始，输入数字如5则从5开始且不补零): ")
+	fmt.Print("\n请输入名称的起始编号 (直接回车从001开始，输入数字如5则从5开始且不补零): ")
 	numInput, _ := reader.ReadString('\n')
 	numInput = strings.TrimSpace(numInput)
 
@@ -98,13 +98,13 @@ func Run() {
 		}
 
 		if num < 1 {
-			fmt.Println("\n起始编号必须大于0!")
+			fmt.Println("\n名称起始编号必须大于0!")
 			return
 		}
 
 		startNum = num
 		useZeroPadding = false // 输入数字时不补零
-		fmt.Printf("\n起始编号设置为: %d (不补零)\n", startNum)
+		fmt.Printf("\n名称起始编号设置为: %d (不补零)\n", startNum)
 	}
 
 	// 显示命名规则
